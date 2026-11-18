@@ -1,3 +1,6 @@
+# When the config file is loaded, it will be expanded by Go.
+# This means you can define any variable in this file as an ENV variable.
+# Sensitive values, such as API keys and secrets, should always be set this way.
 server:
   http:
     port: "8080"
