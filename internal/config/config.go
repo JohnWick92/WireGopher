@@ -18,7 +18,8 @@ var (
 
 // Config mirrors the YAML. Server type lives in internal/http.
 type Config struct {
-	Server Server `yaml:"server"`
+	Server   Server   `yaml:"server"`
+	Firewall Firewall `yaml:"firewall"`
 }
 
 // Load reads and parses the YAML at path.

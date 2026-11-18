@@ -1,3 +1,10 @@
 server:
   http:
     port: "8080"
+firewall:
+  # This is how to set the firewall model
+  firewallModel: "opnsense"
+  opnsense:
+    url: "https:<your OPNsense url for MGMT>"
+    apiKey: "<OPNsense API key>"
+    apiSecret: "<OPNsense API secret>"
