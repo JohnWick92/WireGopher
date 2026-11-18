@@ -1,7 +1,8 @@
 package config
 
 type Firewall struct {
-	OPNsense *OPNsense `yaml:"opnsense"`
+	FirewallModel string `yaml:"firewallModel"`
+	OPNsense *OPNsense `yaml:"opnsense,omitempty"`
 }
 
 type OPNsense struct {

@@ -6,5 +6,6 @@ firewall:
   firewallModel: "opnsense"
   opnsense:
     url: "https:<your OPNsense url for MGMT>"
-    apiKey: "<OPNsense API key>"
-    apiSecret: "<OPNsense API secret>"
+    # This should be setted as ENV var
+    apiKey: "YOUR_OPNSENSE_VAR_API_KEY"
+    apiSecret: "YOUR_OPNSENSE_VAR_API_SECRET"

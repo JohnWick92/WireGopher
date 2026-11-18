@@ -16,6 +16,7 @@ var err error
 
 func Bootstrap() {
 	loadConfig()
+	setSelectedFirewall()
 	runHTTPServer()
 }
 
@@ -37,11 +38,11 @@ func runHTTPServer() {
 
 func setSelectedFirewall() {
 	switch cfg.Firewall.FirewallModel {
-		case "opnsense":
-			opnsense.Run(cfg.Firewall.OPNsense)
-		default:
-			cancelAndExit("Unsupported firewall method")
-			
+	case "opnsense":
+		opnsense.Run(cfg.Firewall.OPNsense)
+	default:
+		cancelAndExit("Unsupported firewall method")
+
 	}
 }
 

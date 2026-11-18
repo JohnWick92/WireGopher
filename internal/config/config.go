@@ -47,7 +47,8 @@ func Load(path string) (*Config, error) {
 	}
 
 	var cfg Config
-	if err := yaml.Unmarshal(raw, &cfg); err != nil {
+	expandedData := os.ExpandEnv(string(raw))
+	if err := yaml.Unmarshal([]byte(expandedData), &cfg); err != nil {
 		return nil, fmt.Errorf("%w: %q: %v", ErrParse, path, err)
 	}
 	return &cfg, nil
