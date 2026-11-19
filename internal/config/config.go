@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/go-playground/validator/v10"
 	"go.yaml.in/yaml/v4"
 )
 
@@ -17,8 +18,8 @@ var (
 
 // Config mirrors the YAML. Server type lives in internal/http.
 type Config struct {
-	Server   Server   `yaml:"server"`
-	Firewall Firewall `yaml:"firewall"`
+	Server   *Server   `yaml:"server" validate:"required"`
+	Firewall *Firewall `yaml:"firewall" validate:"required"`
 }
 
 // Load reads and parses the YAML at path.
@@ -50,6 +51,10 @@ func Load(path string) (*Config, error) {
 	expandedData := os.ExpandEnv(string(raw))
 	if err := yaml.Unmarshal([]byte(expandedData), &cfg); err != nil {
 		return nil, fmt.Errorf("%w: %q: %v", ErrParse, path, err)
+	}
+	validate := validator.New()
+	if err := validate.Struct(cfg); err != nil {
+		return nil, fmt.Errorf("Invalid configuration: %v", err)
 	}
 	return &cfg, nil
 }

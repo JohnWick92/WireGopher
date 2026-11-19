@@ -31,13 +31,13 @@ func loadConfig() {
 }
 
 func runHTTPServer() {
-	if err := http.Run(&cfg.Server); err != nil {
+	if err := http.Run(cfg.Server); err != nil {
 		slog.Error("Server", "error", err)
 	}
 }
 
 func setSelectedFirewall() {
-	switch cfg.Firewall.FirewallModel {
+	switch *cfg.Firewall.FirewallModel {
 	case "opnsense":
 		opnsense.Run(cfg.Firewall.OPNsense)
 	default:

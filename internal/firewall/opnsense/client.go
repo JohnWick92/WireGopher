@@ -10,9 +10,9 @@ var client opnsense.Client
 
 func getClient(cfg *config.OPNsense) {
 	apiClient := api.NewClient(api.Options{
-		Uri:           cfg.URL,
-		APIKey:        cfg.APIkey,
-		APISecret:     cfg.APIsecret,
+		Uri:           *cfg.URL,
+		APIKey:        *cfg.APIkey,
+		APISecret:     *cfg.APIsecret,
 		AllowInsecure: true,
 	})
 	client = opnsense.NewClient(apiClient)

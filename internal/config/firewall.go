@@ -1,12 +1,12 @@
 package config
 
 type Firewall struct {
-	FirewallModel string `yaml:"firewallModel"`
-	OPNsense *OPNsense `yaml:"opnsense,omitempty"`
+	FirewallModel *string    `yaml:"firewallModel" validate:"required"`
+	OPNsense      *OPNsense `yaml:"opnsense,omitempty"`
 }
 
 type OPNsense struct {
-	URL       string `yaml:"url"`
-	APIkey    string `yaml:"apiKey"`
-	APIsecret string `yaml:"apiSecret"`
+	URL       *string `yaml:"url" validate:"required"`
+	APIkey    *string `yaml:"apiKey" validate:"required"`
+	APIsecret *string `yaml:"apiSecret" validate:"required"`
 }
