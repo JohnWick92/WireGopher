@@ -1,7 +1,7 @@
 package config
 
 type Firewall struct {
-	FirewallModel *string    `yaml:"firewallModel" validate:"required"`
+	FirewallModel *string   `yaml:"firewallModel" validate:"required"`
 	OPNsense      *OPNsense `yaml:"opnsense,omitempty"`
 }
 
