@@ -1,7 +1,5 @@
 Here is the revised README in English, clarifying that WireGopher acts as an authentication proxy in front of the VPN, with the firewall intercepting unauthenticated VPN access and directing the user through the authentication flow. The exact implementation depends on the firewall platform and its capabilities.
 
-Writing
-
 # WireGopher
 
 **WireGopher** is an authentication middleware for WireGuard VPN environments, designed to integrate VPN access control with external identity providers such as **Keycloak**.
