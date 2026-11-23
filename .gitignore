@@ -33,3 +33,5 @@ go.work.sum
 # .vscode/
 configs/wiregopher.yaml
 configs/wiregopher.docker.yaml
+
+tmp/

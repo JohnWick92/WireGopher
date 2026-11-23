@@ -1,9 +1,10 @@
 # When the config file is loaded, it will be expanded by Go.
 # This means you can define any variable in this file as an ENV variable.
 # Sensitive values, such as API keys and secrets, should always be set this way.
+# For docker everything should go on ENV
 server:
   http:
-    port: "8080"
+    port: "WIREGOPHER_PORT"
 firewall:
   # This is how to set the firewall model
   firewallModel: "opnsense"
