@@ -1,0 +1,29 @@
+name: Go Format Check
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  gofmt:
+    name: Check Code Formatting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+
+      - name: Run gofmt
+        run: |
+          if [ -n "$(gofmt -l .)" ]; then
+            echo "::error::The following files are not properly formatted:"
+            gofmt -l .
+            echo "Please run 'gofmt -w .' locally, commit, and push again."
+            exit 1
+          fi
