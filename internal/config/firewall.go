@@ -9,4 +9,5 @@ type OPNsense struct {
 	URL       *string `yaml:"url" validate:"required"`
 	APIkey    *string `yaml:"apiKey" validate:"required"`
 	APIsecret *string `yaml:"apiSecret" validate:"required"`
+	Alias     *string `yaml:"alias" validate:"required"`
 }

@@ -31,7 +31,7 @@ func loadConfig() {
 }
 
 func runHTTPServer() {
-	if err := http.Run(cfg.Server); err != nil {
+	if err := http.Run(cfg); err != nil {
 		slog.Error("Server", "error", err)
 	}
 }

@@ -10,15 +10,15 @@ import (
 var multiplexer = nethttp.NewServeMux()
 var server *nethttp.Server
 
-func createServer(cfg *config.Server) {
+func createServer(cfg *config.Config) {
 	server = &nethttp.Server{
-		Addr:    ":" + cfg.HTTP.Port,
+		Addr:    ":" + cfg.Server.HTTP.Port,
 		Handler: multiplexer,
 	}
-	registerRoutes(multiplexer)
+	registerRoutes(multiplexer, cfg)
 }
 
-func Run(cfg *config.Server) error {
+func Run(cfg *config.Config) error {
 	createServer(cfg)
 	slog.Info("Listening on", "port", server.Addr)
 	return server.ListenAndServe()

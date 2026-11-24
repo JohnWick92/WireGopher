@@ -20,6 +20,7 @@ var (
 type Config struct {
 	Server   *Server   `yaml:"server" validate:"required"`
 	Firewall *Firewall `yaml:"firewall" validate:"required"`
+	IAM      *IAM      `yaml:"iam" validate:"required"`
 }
 
 // Load reads and parses the YAML at path.
