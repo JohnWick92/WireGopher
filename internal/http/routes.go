@@ -13,4 +13,5 @@ func registerRoutes(mux *nethttp.ServeMux, cfg *config.Config) {
 
 	mux.Handle("GET /auth", auth.HandleAuth(cfg))
 	mux.HandleFunc("GET /health", handlers.GetHealth)
+	mux.Handle("/iam/{remainder...}", proxy.IAMProxy(cfg))
 }
