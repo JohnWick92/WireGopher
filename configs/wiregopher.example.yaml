@@ -5,6 +5,7 @@
 server:
   http:
     port: "WIREGOPHER_PORT"
+    url: "MIDDLEWARE_URL:WIREGOPHER_PORT"
 firewall:
   # This is how to set the firewall model
   firewallModel: "opnsense"
@@ -13,3 +14,16 @@ firewall:
     # This should be setted as ENV var
     apiKey: "YOUR_OPNSENSE_VAR_API_KEY"
     apiSecret: "YOUR_OPNSENSE_VAR_API_SECRET"
+    alias: "test"
+iam:
+  # The provider of your IAM
+  provider: "keycloak"
+  keycloak:
+    url: ""
+    issuer: ""
+    realm: ""
+    clientID: ""
+    clientSecret: ""
+    # The MIDDLEWARE_URL with port if needed followed by
+    # slash and callback e.g.: middleware.example:3000/callback
+    redirectURI: ""
