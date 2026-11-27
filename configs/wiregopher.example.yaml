@@ -27,3 +27,10 @@ iam:
     # The MIDDLEWARE_URL with port if needed followed by
     # slash and callback e.g.: middleware.example:3000/callback
     redirectURI: ""
+# Currently the only one supported is Grafana Alloy
+observability:
+  alloy:
+    # The host can be the container name if in the same container network
+    host: "0.0.0.0"
+    # Default port
+    port: "514"

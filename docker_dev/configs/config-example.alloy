@@ -1,0 +1,19 @@
+loki.source.syslog "WireGopher" {
+    listener {
+        address       = "0.0.0.0:514"
+        protocol      = "udp"
+        syslog_format = "rfc5424"
+
+        labels = {
+            service = "WireGopher",
+        }
+    }
+
+    forward_to = [loki.write.default.receiver]
+}
+
+loki.write "default" {
+    endpoint {
+        url = "http://loki-dev:3100/loki/api/v1/push"
+    }
+}
