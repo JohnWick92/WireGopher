@@ -18,9 +18,10 @@ var (
 
 // Config mirrors the YAML. Server type lives in internal/http.
 type Config struct {
-	Server   *Server   `yaml:"server" validate:"required"`
-	Firewall *Firewall `yaml:"firewall" validate:"required"`
-	IAM      *IAM      `yaml:"iam" validate:"required"`
+	Server        *Server        `yaml:"server" validate:"required"`
+	Firewall      *Firewall      `yaml:"firewall" validate:"required"`
+	IAM           *IAM           `yaml:"iam" validate:"required"`
+	Observability *Observability `yaml:"observability" validate:"required"`
 }
 
 // Load reads and parses the YAML at path.
