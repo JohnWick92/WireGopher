@@ -52,6 +52,8 @@ services:
     image: grafana/grafana:latest
     container_name: grafana-dev
     restart: unless-stopped
+    depends_on:
+      - loki-dev
     ports:
       - "3000:3000"
     volumes:
