@@ -9,6 +9,7 @@ import (
 	"github.com/JohnWick92/WireGopher/internal/config"
 	"github.com/JohnWick92/WireGopher/internal/firewall/opnsense"
 	"github.com/JohnWick92/WireGopher/internal/http"
+	"github.com/JohnWick92/WireGopher/internal/observability"
 )
 
 var cfg *config.Config
@@ -16,8 +17,10 @@ var err error
 
 func Bootstrap() {
 	loadConfig()
+	setupObservability()
 	setSelectedFirewall()
 	runHTTPServer()
+	observability.LogInfo("Bootstrap completed")
 }
 
 func loadConfig() {
@@ -28,6 +31,15 @@ func loadConfig() {
 		config.LogAndExit(err)
 	}
 	slog.Info("Config loaded")
+}
+
+func setupObservability() {
+	if err := observability.Init(
+		*cfg.Observability.Alloy.Host,
+		*cfg.Observability.Alloy.Port,
+	); err != nil {
+		config.LogAndExit(err)
+	}
 }
 
 func runHTTPServer() {
